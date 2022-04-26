@@ -21,10 +21,34 @@ function Header({ hamburgerMenuClickHandler }) {
 	const [popMenuStatus, setPopMenuStatus] = useState(false);
 	const [animateHeader, setAnimateHeader] = useState(false);
 	const [searchStatus, setsearchStatus] = useState(false);
-	const popMenuOptions = [
-		{ option: 'Login', text: '' },
-		{ option: 'SignUp', text: '' },
-	];
+	/**
+	 * header menus static options.
+	 */
+	const options = {
+		people: [{ option: 'Popular People', text: '' }],
+
+		popMenu: [
+			{ option: 'Login', text: '' },
+			{ option: 'SignUp', text: '' },
+		],
+		movies: [
+			{ option: 'Popular', text: '' },
+			{ option: 'Now Playing', text: '' },
+			{ option: 'Upcoming', text: '' },
+		],
+		tvShows: [
+			{ option: 'Popular', text: '' },
+			{ option: 'Airing Today', text: '' },
+			{ option: 'On TV', text: '' },
+		],
+		more: [
+			{ option: 'Discussions', text: '' },
+			{ option: 'Leaderboard', text: '' },
+			{ option: 'Support', text: '' },
+			{ option: 'API', text: '' },
+		],
+	};
+
 	/**
 	 * open or close the PopMenu.
 	 */
@@ -71,39 +95,16 @@ function Header({ hamburgerMenuClickHandler }) {
 					<HeaderImage mainLogoBig src={siteLogoBig} alt='Site Logo' />
 					<HeaderList leftList>
 						<HeaderListItem>
-							Movies
-							<PopMenu
-								options={[
-									{ option: 'Popular', text: '' },
-									{ option: 'Now Playing', text: '' },
-									{ option: 'Upcoming', text: '' },
-								]}
-							/>
+							Movies <PopMenu options={options.movies} />
 						</HeaderListItem>
 						<HeaderListItem>
-							TV Shows
-							<PopMenu
-								options={[
-									{ option: 'Popular', text: '' },
-									{ option: 'Airing Today', text: '' },
-									{ option: 'On TV', text: '' },
-								]}
-							/>
+							TV Shows <PopMenu options={options.tvShows} />
 						</HeaderListItem>
 						<HeaderListItem>
-							People
-							<PopMenu options={[{ option: 'Popular People', text: '' }]} />
+							People <PopMenu options={options.people} />
 						</HeaderListItem>
 						<HeaderListItem>
-							More
-							<PopMenu
-								options={[
-									{ option: 'Discussions', text: '' },
-									{ option: 'Leaderboard', text: '' },
-									{ option: 'Support', text: '' },
-									{ option: 'API', text: '' },
-								]}
-							/>
+							More <PopMenu options={options.more} />
 						</HeaderListItem>
 					</HeaderList>
 				</HeaderSection>
@@ -120,7 +121,7 @@ function Header({ hamburgerMenuClickHandler }) {
 						<HeaderListItem>Login</HeaderListItem>
 						<HeaderListItem>Join TMDB</HeaderListItem>
 					</HeaderList>
-					{popMenuStatus && <PopMenu handlePopMenu={handlePopMenu} options={popMenuOptions} />}
+					{popMenuStatus && <PopMenu handlePopMenu={handlePopMenu} options={options.popMenu} />}
 					{!searchStatus && <HeaderImage search src={search} alt='Search' onClick={openSearch} />}
 					{searchStatus && <HeaderImage search src={close} alt='Close' onClick={closeSearch} />}
 				</HeaderSection>

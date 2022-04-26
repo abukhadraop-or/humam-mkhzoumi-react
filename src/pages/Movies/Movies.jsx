@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import SideMenu from 'components/shared/SideMenu/SideMenu';
-import MoviesSort from 'components/movies/MoviesSort/MoviesSort';
 import MoviesList from 'components/movies/MoviesList/MoviesList';
 import { PageWrapper, PageName, Wrapper } from 'pages/Movies/movies-styled';
+import SortAndFIlter from 'components/movies/SortAndFIlter/SortAndFilter';
 
 function Movies({ sideMenuStatus }) {
 	const [movies, setMovies] = useState([]);
@@ -15,7 +15,7 @@ function Movies({ sideMenuStatus }) {
 	const [pageNumber, setPageNumber] = useState(1);
 	const [loadMoreStatus, setLoadMoreStatus] = useState(false);
 	/**
-	 * these links should be in .env file but o kept them here so you can see them.
+	 * these links should be in .env file but i kept them here so you can see them.
 	 */
 	const moviesApi = 'https://api.themoviedb.org/3/discover/movie?';
 	const apiKey = 'f47e18186c42be3e17197d59d54d7704';
@@ -105,7 +105,7 @@ function Movies({ sideMenuStatus }) {
 			<PageWrapper>
 				<Wrapper>
 					<PageName>Popular Movies</PageName>
-					<MoviesSort isLoading={isLoading} sortHandler={sortHandler} />
+					<SortAndFIlter isLoading={isLoading} sortHandler={sortHandler} />
 				</Wrapper>
 				<MoviesList loadMoreHandle={loadMoreClickHandle} movies={movies} />
 			</PageWrapper>

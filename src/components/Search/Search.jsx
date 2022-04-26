@@ -12,6 +12,7 @@ import {
 import blackClose from 'assets/svg/blackClose.svg';
 import blackSearchIcon from 'assets/svg/blackSearch.svg';
 import axios from 'axios';
+import LoadingSpinner from 'components/shared/LoadingSpinner/LoadingSpinner';
 
 function Search({ closeSearch }) {
 	const searchRef = useRef();
@@ -42,6 +43,7 @@ function Search({ closeSearch }) {
 		setinputValue(event.target.value);
 		if (event.target.value === '') {
 			setResults([]);
+			setLoading(false);
 			return;
 		}
 		try {
@@ -70,7 +72,9 @@ function Search({ closeSearch }) {
 			<SearchInputBox>
 				<SearchImg src={blackSearchIcon} alt='Search Icon' />
 				<InputArea placeholder='Search' type='text' value={inputValue} onChange={changeHandler} />
-				<SearchImg smallest src={blackClose} alt='Close Icon' onClick={resetInput} />
+				{(loading && <LoadingSpinner />) || (
+					<SearchImg smallest src={blackClose} alt='Close Icon' onClick={resetInput} />
+				)}
 			</SearchInputBox>
 			<ResultsList>
 				{results.map((result) => {

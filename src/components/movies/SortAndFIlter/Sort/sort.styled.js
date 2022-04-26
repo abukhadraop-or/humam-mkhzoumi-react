@@ -5,7 +5,8 @@ export const SortWrapper = styledComponents.div`
 border: 1px solid #e3e3e3;
 box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
 width: calc(100% - 50px);
-margin: auto auto;
+margin: auto;
+margin-bottom:15px;
 border-radius: 6px;
 }
 `;
@@ -24,8 +25,7 @@ padding: 0 15px;
 `;
 
 export const SortBody = styledComponents.div`
-padding: 0 15px 20px 15px;
-}
+padding: 10px 15px 20px 15px}
 `;
 
 export const SortSelect = styledComponents.select`
@@ -49,24 +49,6 @@ export const SortText = styledComponents.span`
 display: block;
 `;
 
-export const SearchButton = styledComponents.button`
-text-align:center;
-width: calc(100% - 50px);
-display:block;
-margin: 20px auto;
-min-height: 45px;
-border-radius:50px;
-border:none;
-font-weight: 600;
-font-size: 1em;
-cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
-background-color: ${(props) => (props.disabled ? '#ececec' : '#01b4e4')};
-color: ${(props) => (props.disabled ? 'rgba(0,0,0,0.5)' : 'white')};
-&:hover{
-background-color: ${(props) => (props.disabled ? '#ececec' : '#032541')};
-}
-`;
-
 export const ExpandArrowImage = styledComponents.img`
 width: 18px;
 transform: ${(props) => (props.rotateStatus ? 'rotate(90deg)' : 'rotate(0deg)')};
@@ -78,5 +60,3 @@ ExpandArrowImage.propTypes = {
 ExpandArrowImage.defaultProps = {
 	rotateStatus: false,
 };
-
-export const AllSectionWrapper = styledComponents.div``;

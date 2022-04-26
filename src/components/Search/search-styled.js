@@ -16,13 +16,16 @@ width: 100%;
 border-bottom: 1px #ebebeb solid;
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: flex-start;
 `;
 
 export const SearchImg = styledComponents.img`
 width: ${(props) => (props.small ? '18px' : props.smallest ? '16px' : '22px')};
-margin-left:${(props) => (props.small ? '28px' : '')};
+margin-left:${(props) => (props.smallest ? '10px' : '22px')};
 cursor:${(props) => (props.smallest ? 'pointer' : '')};
+@media screen and (min-width: 850px){
+    margin-left:${(props) => (props.smallest ? '' : '47px')};
+}
 `;
 SearchImg.propTypes = {
 	small: PropTypes.bool,
@@ -34,7 +37,7 @@ SearchImg.defaultProps = {
 };
 
 export const InputArea = styledComponents.input`
-width: calc(100% - 90px);
+width: calc(100% - 100px);
 text-indent: 5px;
 font-size: 1em;
 color: #acacac;
@@ -48,14 +51,15 @@ height: 45px;
 ::placeholder {
     color: #b2b2b2;
     opacity: 1; /* Firefox */
-  }
-  
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
    color: #b2b2b2;
-  }
-  
-  ::-ms-input-placeholder { /* Microsoft Edge */
+}
+::-ms-input-placeholder { /* Microsoft Edge */
    color: #b2b2b2;
+}
+@media only screen and (min-width: 850px) {
+    width: calc(100% - 140px);
   }
 `;
 
