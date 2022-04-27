@@ -12,18 +12,14 @@ import {
 	ThreeDotsMenu,
 	CardWrapper,
 } from 'components/movies/MovieCard/movie-card-styled';
+import imgNotFound from 'assets/svg/imgNotFound.png';
 
 function MovieCard({ movie }) {
 	const [isThreeDotsClicked, setIsThreeDotsClicked] = useState(false);
 	const [isLastCardOnRight, setIsLastCardOnRight] = useState(false);
 	const wrapperRef = useRef();
-	let imagePath = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
-	/**
-	 * give a default image if the image path is null
-	 */
-	if (movie.poster_path === null) {
-		imagePath = 'https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg';
-	}
+	let imagePath =
+		movie.poster_path != null ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : imgNotFound;
 
 	/**
 	 * find an element right offset
